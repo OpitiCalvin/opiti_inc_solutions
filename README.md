@@ -1,6 +1,6 @@
 ##Solutions: Opiti Consulting##
 
-This is a repository for managing of all solutions developed by Opiti Consulting [Opiti Inc] (https://www.opiticonsulting.com).
+This is a repository for managing of all solutions developed by [Opiti Consulting (Opiti Inc)](https://www.opiticonsulting.com).
 
 Please note that this is a private repository and in the event you come across this and its content, 
 DO NOT proceed to use this content without authorization OR please abide by the rules and regulations as stipulated by the BDS 3-Clause license.
@@ -13,7 +13,7 @@ Thank you and I will appreciate it.
 
 This is a private company offering services in the GIS, remote sensing and Spatial analytics domain. 
 
-Please visit the sites <a href="https://wwwopiticonsulting.com" target="_blank" >Opiti Inc</a> for more details and do not hesitate to make contact for a chat.
+Please visit the site, [**Opiti Inc**](https://wwwopiticonsulting.com), for more details and do not hesitate to make contact for a chat.
 
 ---
 
