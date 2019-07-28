@@ -18,11 +18,11 @@
 
 
 	<style>
-		html, body {
-		  height: 90%;
+		html {
+			overflow-y: scroll;
 		}
 		#map {
-		  height: 50%;
+		  min-height: 500px;
 		}
 		.button {
 			background-color: Crimson;  
@@ -31,7 +31,6 @@
 			padding: .5em;
 			text-decoration: none;
 		}
-
 			.button:focus,
 			.button:hover {
 			background-color: FireBrick;
@@ -79,7 +78,7 @@
 
 	<div class="container-fluid">
 		<div class="row" style="margin:0 10px;">
-			<div id="map" class="col-md-9 col-sm-12" style="height: 500px;"></div>
+			<div id="map" class="col-md-9 col-sm-12"></div>
 			<div id="tools"  class="col-md-3 col-sm-12">
 				<div id="accordion">
 					<h3>Data Export</h3>
