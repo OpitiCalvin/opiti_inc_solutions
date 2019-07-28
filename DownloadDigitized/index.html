@@ -77,35 +77,35 @@
 	</div>
 	<!-- //header -->
 
-	<div class="row" style="margin:0 10px;">
-		<div id="map" class="col-md-9" style="height: 500px;"></div>
-		<div id="tools"  class="col-md-3">
-			<div id="accordion">
-				<h3>Data Export</h3>
-				<div>					
-					<p> Download in the following formats:</p>
-					<ol>
-						<li>Zipped Shapefile</li>
-						<li>GeoJSON File</li>
-					</ol><br>
-					<input type="button" id="export" value="Export Features" />
-					<!-- <a href='#' id='export'>Export Features</a> -->
-					<!-- <a href='#' id='download'>Download Features</a> -->
+	<div class="container-fluid">
+		<div class="row" style="margin:0 10px;">
+			<div id="map" class="col-md-9 col-sm-12" style="height: 500px;"></div>
+			<div id="tools"  class="col-md-3 col-sm-12">
+				<div id="accordion">
+					<h3>Data Export</h3>
+					<div>					
+						<p> Download in the following formats:</p>
+						<ol>
+							<li>Zipped Shapefile</li>
+							<li>GeoJSON File</li>
+						</ol><br>
+						<input type="button" id="export" value="Export Features" />
+						<!-- <a href='#' id='export'>Export Features</a> -->
+						<!-- <a href='#' id='download'>Download Features</a> -->
+					</div>
+					<h3>View GeoJSON</h3>
+					<div id="geojson_content">
+						
+						<textarea id="geojson_data" rows = "10" cols = "30" name = "geojson_data"></textarea><br>
+					</div>
+					<h3>Data Download</h3>
+					<div>
+						<a href="#" id='download' class="button js-button" role="button">Download Data</a>
+					</div>
 				</div>
-				<h3>View GeoJSON</h3>
-				<div id="geojson_content">
-					
-					<textarea id="geojson_data" rows = "10" cols = "30" name = "geojson_data"></textarea><br>
-				</div>
-				<h3>Data Download</h3>
-				<div>
-					<a href="#" id='download' class="button js-button" role="button">Download Data</a>
-				</div>
-
 			</div>
 		</div>
 	</div>
-
 	<div id="footerSection" class="py-5 bg-dark" style="height:10%;background-color: #ede5f0;margin-right:10px;margin-left:10px;">
 		<!-- Footer -->    
 		<div class="container">
