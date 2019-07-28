@@ -1,4 +1,4 @@
-var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+var osmLayer = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap<\/a> contributors'
 });
 
@@ -31,16 +31,11 @@ var baseMaps = {
   "OSM": osmLayer
 };
 
-var overlayMaps = {};
-
-var lc = L.control.layers(baseMaps, overlayMaps, {collapsed: true}).addTo(map);
-
-// L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-//     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-// }).addTo(map);
-
 var drawnItems = new L.FeatureGroup()
 map.addLayer(drawnItems)
+
+var overlayMaps = {"Screen Digitized": drawnItems};
+var lc = L.control.layers(baseMaps, overlayMaps, {collapsed: true}).addTo(map);
 
 var drawControl = new L.Control.Draw({
   position: 'bottomright',
@@ -56,7 +51,7 @@ var drawControl = new L.Control.Draw({
       },
       showArea: true,
       metric: true,
-      repeatMode: true,
+      repeatMode: false,
     },
     marker: false,
     polyline: {
@@ -68,7 +63,7 @@ var drawControl = new L.Control.Draw({
         color: 'orange',
         timeout: 1000
       },
-      repeatMode: true,
+      repeatMode: false,
     },
     circlemarker: false,
     rectangle: {
@@ -77,7 +72,7 @@ var drawControl = new L.Control.Draw({
       },
       showArea: true,
       metric: true,
-      repeatMode: true,
+      repeatMode: false,
     },
     circle: {
       shapeOptions: {
@@ -85,7 +80,7 @@ var drawControl = new L.Control.Draw({
       },
       showArea: true,
       metric: true,
-      repeatMode: true,
+      repeatMode: false,
     },
   },
   edit: {
@@ -95,31 +90,47 @@ var drawControl = new L.Control.Draw({
 
 map.addControl(drawControl);
 map.on(L.Draw.Event.CREATED, function (e) {
-   var layer = e.layer;
-    drawnItems.addLayer(layer);
+  var layer = e.layer;
+  var type = e.layerType;
 
-    // on click, convert to geoJSON
-    document.getElementById("export").onclick = function (e){
-      var data = drawnItems.toGeoJSON();
-      // Stringify the GeoJSON
-      var convertedData = 'text/json; charset=utf-8,' + encodeURIComponent(JSON.stringify(data));
-      var str = JSON.stringify(data, undefined, 4);
-      document.getElementById("geojson_data").innerHTML = str;
+  drawnItems.addLayer(layer);
 
-      document.getElementById('download').onclick = function (e){
-        document.getElementById('download').setAttribute('href', 'data:' + convertedData);
-        document.getElementById('download').setAttribute('download','data.geojson');  
+  // on click, convert to geoJSON
+  document.getElementById("export").onclick = function (e){
+    // create a new featureGroup
+    var items2Export = new L.FeatureGroup();
+    drawnItems.eachLayer(function (layer) {
+      // load all non-circle features to new feature group
+      if (!(layer instanceof L.Circle)) {
+        items2Export.addLayer(layer);
       }
-      
-    }
-    // // on click, export features
-    // document.getElementById('export').onclick = function (e){
-    //   // extract GeoJSON from drawnItems
-    //   var data
+      else{
+        // convert circle feature to turf.circle (basically a polygon with 64 vertices) then...
+         // add to new feature group for exporting as geojson
+        var theCenterPt = layer.getLatLng();
+        var epiCenter = [theCenterPt.lng, theCenterPt.lat];
+        var radius = layer.getRadius();
 
-      
-    //   // create export
-    //   document.getElementById('export').setAttribute('href', 'data:' + convertedData);
-    //   document.getElementById('export').setAttribute('download','data.geojson');
-    // }
+        // Turf Circle
+        var options = {steps: 64, units: 'meters'};
+        var turfCircle = turf.circle(epiCenter, radius, options);
+        var NewTurfCircle = new L.GeoJSON(turfCircle, {color:"steelblue"});    
+        
+        items2Export.addLayer(NewTurfCircle);
+      }
+    });
+
+    var data = items2Export.toGeoJSON();
+    // Stringify the GeoJSON
+    var convertedData = 'text/json; charset=utf-8,' + encodeURIComponent(JSON.stringify(data));
+    var str = JSON.stringify(data, undefined, 4);
+    document.getElementById("geojson_data").innerHTML = str;
+
+    document.getElementById('download').onclick = function (e){
+      document.getElementById('download').setAttribute('href', 'data:' + convertedData);
+      document.getElementById('download').setAttribute('download','data.geojson');  
+    }
+    
+  }
+  
 });
