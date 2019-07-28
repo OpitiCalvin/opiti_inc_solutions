@@ -24,7 +24,7 @@ require(['catiline'], function(cw) {
 
         },
         color:function(s){
-            //from http://stackoverflow.com/a/15710692
+            //from https://stackoverflow.com/a/15710692
             importScripts('js/colorbrewer.js');
             return colorbrewer.Spectral[11][Math.abs(JSON.stringify(s).split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0)) % 11];
         },

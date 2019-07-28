@@ -450,7 +450,7 @@ function fromByteArray (uint8) {
 /*!
  * The buffer module from node.js, for the browser.
  *
- * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
+ * @author   Feross Aboukhadijeh <feross@feross.org> <https://feross.org>
  * @license  MIT
  */
 /* eslint-disable no-proto */
@@ -1438,7 +1438,7 @@ function utf8Slice (buf, start, end) {
   return decodeCodePointsArray(res)
 }
 
-// Based on http://stackoverflow.com/a/22747272/680742, the browser with
+// Based on https://stackoverflow.com/a/22747272/680742, the browser with
 // the lowest limit is Chrome, with 0x10000 args.
 // We go 1 magnitude less, for safety
 var MAX_ARGUMENTS_LENGTH = 0x1000
@@ -2649,7 +2649,7 @@ var table = [
 /**
  *
  *  Javascript crc32
- *  http://www.webtoolkit.info/
+ *  https://www.webtoolkit.info/
  *
  */
 module.exports = function crc32(input, crc) {
@@ -3456,7 +3456,7 @@ var generateCompressedObjectFrom = function(file, compression, compressionOption
  * @param {Boolean} isDir true if the entry is a directory, false otherwise.
  * @return {Number} a 32 bit integer.
  *
- * adapted from http://unix.stackexchange.com/questions/14705/the-zip-formats-external-file-attribute :
+ * adapted from https://unix.stackexchange.com/questions/14705/the-zip-formats-external-file-attribute :
  *
  * TTTTsstrwxrwxrwx0000000000ADVSHR
  * ^^^^____________________________ file type, see zipinfo.c (UNX_*)
@@ -3556,9 +3556,9 @@ var generateZipParts = function(name, file, compressedObject, offset, platform, 
     }
 
     // date
-    // @see http://www.delorie.com/djgpp/doc/rbinter/it/52/13.html
-    // @see http://www.delorie.com/djgpp/doc/rbinter/it/65/16.html
-    // @see http://www.delorie.com/djgpp/doc/rbinter/it/66/16.html
+    // @see https://www.delorie.com/djgpp/doc/rbinter/it/52/13.html
+    // @see https://www.delorie.com/djgpp/doc/rbinter/it/65/16.html
+    // @see https://www.delorie.com/djgpp/doc/rbinter/it/66/16.html
 
     dosTime = date.getHours();
     dosTime = dosTime << 6;
@@ -4423,12 +4423,12 @@ function arrayLikeToString(array) {
     // Performances notes :
     // --------------------
     // String.fromCharCode.apply(null, array) is the fastest, see
-    // see http://jsperf.com/converting-a-uint8array-to-a-string/2
+    // see https://jsperf.com/converting-a-uint8array-to-a-string/2
     // but the stack is limited (and we can get huge arrays !).
     //
     // result += String.fromCharCode(array[i]); generate too many strings !
     //
-    // This code is inspired by http://jsperf.com/arraybuffer-to-string-apply-performance/2
+    // This code is inspired by https://jsperf.com/arraybuffer-to-string-apply-performance/2
     var chunk = 65536;
     var result = [],
         len = array.length,
@@ -4867,7 +4867,7 @@ ZipEntries.prototype = {
 
             if (isGarbage) {
                 throw new Error("Can't find end of central directory : is this a zip file ? " +
-                                "If it is, see http://stuk.github.io/jszip/documentation/howto/read_zip.html");
+                                "If it is, see https://stuk.github.io/jszip/documentation/howto/read_zip.html");
             } else {
                 throw new Error("Corrupted zip : can't find end of central directory");
             }
@@ -4897,7 +4897,7 @@ ZipEntries.prototype = {
             all numbers as 64-bit double precision IEEE 754 floating point numbers.
             So, we have 53bits for integers and bitwise operations treat everything as 32bits.
             see https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Operators/Bitwise_Operators
-            and http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-262.pdf section 8.5
+            and https://www.ecma-international.org/publications/files/ECMA-ST/ECMA-262.pdf section 8.5
             */
 
             // should look for a zip64 EOCD locator
@@ -5068,7 +5068,7 @@ ZipEntry.prototype = {
         reader.skip(22);
         // in some zip created on windows, the filename stored in the central dir contains \ instead of /.
         // Strangely, the filename here is OK.
-        // I would love to treat these zip files as corrupted (see http://www.info-zip.org/FAQ.html#backslashes
+        // I would love to treat these zip files as corrupted (see https://www.info-zip.org/FAQ.html#backslashes
         // or APPNOTE#4.4.17.1, "All slashes MUST be forward slashes '/'") but there are a lot of bad zip generators...
         // Search "unzip mismatching "local" filename continuing with "central" filename version" on
         // the internet.
@@ -5076,7 +5076,7 @@ ZipEntry.prototype = {
         // I think I see the logic here : the central directory is used to display
         // content and the local directory is used to extract the files. Mixing / and \
         // may be used to display \ to windows users and use / when extracting the files.
-        // Unfortunately, this lead also to some issues : http://seclists.org/fulldisclosure/2009/Sep/394
+        // Unfortunately, this lead also to some issues : https://seclists.org/fulldisclosure/2009/Sep/394
         this.fileNameLength = reader.readInt(2);
         localExtraFieldsLength = reader.readInt(2); // can't be sure this will be the same as the central dir
         this.fileName = reader.readData(this.fileNameLength);
@@ -5987,7 +5987,7 @@ var Z_DEFLATED  = 8;
  * - `strategy`
  * - `dictionary`
  *
- * [http://zlib.net/manual.html#Advanced](http://zlib.net/manual.html#Advanced)
+ * [https://zlib.net/manual.html#Advanced](https://zlib.net/manual.html#Advanced)
  * for more information on these.
  *
  * Additional options, for internal needs:
@@ -6239,7 +6239,7 @@ Deflate.prototype.onEnd = function (status) {
  * - strategy
  * - dictionary
  *
- * [http://zlib.net/manual.html#Advanced](http://zlib.net/manual.html#Advanced)
+ * [https://zlib.net/manual.html#Advanced](https://zlib.net/manual.html#Advanced)
  * for more information on these.
  *
  * Sugar (options):
@@ -6367,7 +6367,7 @@ var toString = Object.prototype.toString;
  * - `windowBits`
  * - `dictionary`
  *
- * [http://zlib.net/manual.html#Advanced](http://zlib.net/manual.html#Advanced)
+ * [https://zlib.net/manual.html#Advanced](https://zlib.net/manual.html#Advanced)
  * for more information on these.
  *
  * Additional options, for internal needs:
@@ -6657,7 +6657,7 @@ Inflate.prototype.onEnd = function (status) {
  *
  * - windowBits
  *
- * [http://zlib.net/manual.html#Advanced](http://zlib.net/manual.html#Advanced)
+ * [https://zlib.net/manual.html#Advanced](https://zlib.net/manual.html#Advanced)
  * for more information.
  *
  * Sugar (options):
@@ -16314,7 +16314,7 @@ module.exports = function(buffer, encoding) {
 	    Formules et constantes pour le Calcul pour la
 	    projection cylindrique conforme à axe oblique et pour la transformation entre
 	    des systèmes de référence.
-	    http://www.swisstopo.admin.ch/internet/swisstopo/fr/home/topics/survey/sys/refsys/switzerland.parsysrelated1.31216.downloadList.77004.DownloadFile.tmp/swissprojectionfr.pdf
+	    https://www.swisstopo.admin.ch/internet/swisstopo/fr/home/topics/survey/sys/refsys/switzerland.parsysrelated1.31216.downloadList.77004.DownloadFile.tmp/swissprojectionfr.pdf
 	  */
 
 	function init$8() {
@@ -17384,7 +17384,7 @@ module.exports = function(buffer, encoding) {
 	/*
 	  reference:
 	    Wolfram Mathworld "Gnomonic Projection"
-	    http://mathworld.wolfram.com/GnomonicProjection.html
+	    https://mathworld.wolfram.com/GnomonicProjection.html
 	    Accessed: 12th November 2009
 	  */
 	function init$15() {
@@ -17754,9 +17754,9 @@ module.exports = function(buffer, encoding) {
 	/*
 	  reference
 	    Department of Land and Survey Technical Circular 1973/32
-	      http://www.linz.govt.nz/docs/miscellaneous/nz-map-definition.pdf
+	      https://www.linz.govt.nz/docs/miscellaneous/nz-map-definition.pdf
 	    OSG Technical Report 4.1
-	      http://www.linz.govt.nz/docs/miscellaneous/nzmg.pdf
+	      https://www.linz.govt.nz/docs/miscellaneous/nzmg.pdf
 	  */
 
 	/**
@@ -18934,7 +18934,7 @@ module.exports = function(buffer, encoding) {
 	  /* Compute phi and theta for the area of definition.
 	   * The inverse projection is not described in the original paper, but some
 	   * good hints can be found here (as of 2011-12-14):
-	   * http://fits.gsfc.nasa.gov/fitsbits/saf.93/saf.9302
+	   * https://fits.gsfc.nasa.gov/fitsbits/saf.93/saf.9302
 	   * (search for "Message-Id: <9302181759.AA25477 at fits.cv.nrao.edu>") */
 	  t = (SPI / 12) * Math.tan(mu);
 	  tantheta = Math.sin(t) / (Math.cos(t) - (1 / Math.sqrt(2)));
@@ -19308,7 +19308,7 @@ StringDecoder.prototype.detectIncompleteChar = function(buffer) {
   for (; i > 0; i--) {
     var c = buffer[buffer.length - i];
 
-    // See http://en.wikipedia.org/wiki/UTF-8#Description
+    // See https://en.wikipedia.org/wiki/UTF-8#Description
 
     // 110XXXXX
     if (i == 1 && c >> 5 == 0x06) {

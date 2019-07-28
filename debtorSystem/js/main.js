@@ -41,7 +41,7 @@ const rasterLayer = new ol.layer.Tile({
   source: new ol.source.XYZ({
     url: 'https://{a-c}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
     attributions:
-      '&copy; Openstreetmap France | &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      '&copy; Openstreetmap France | &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   })
 });
 

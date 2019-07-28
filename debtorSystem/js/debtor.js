@@ -44,7 +44,7 @@ var gProv = new ol.layer.Vector({
 		projection : 'EPSG:4326',
 		features : (new ol.format.GeoJSON()).readFeatures(gauteng),
 		attributions:
-' | &copy; <a href="http://www.opiticonsulting.com" target=_blank">Opiti Consulting</a>'
+' | &copy; <a href="https://www.opiticonsulting.com" target=_blank">Opiti Consulting</a>'
 		//url : '../data/CityJHB.geojson',
 		//format : new ol.format.GeoJSON()
 	}),
