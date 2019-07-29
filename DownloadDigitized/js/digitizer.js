@@ -95,6 +95,8 @@ map.on(L.Draw.Event.CREATED, function (e) {
 
   drawnItems.addLayer(layer);
 
+  var jsonContainer = $('#json-container');
+
   // on click, convert to geoJSON
   document.getElementById("export").onclick = function (e){
     // create a new featureGroup
@@ -121,10 +123,25 @@ map.on(L.Draw.Event.CREATED, function (e) {
     });
 
     var data = items2Export.toGeoJSON();
+    
+
     // Stringify the GeoJSON
     var convertedData = 'text/json; charset=utf-8,' + encodeURIComponent(JSON.stringify(data));
     var str = JSON.stringify(data, undefined, 4);
-    document.getElementById("geojson_data").innerHTML = str;
+    // document.getElementById("geojson_data").innerHTML = str;
+    // document.getElementById("json-container").innerHTML = str;
+
+    var error = false;
+    try {
+      var json = JSON.parse(str);
+    }
+    catch (f) {
+      error = true;
+    }
+
+    jsonContainer
+    .jsonPresenter('destroy')
+    .jsonPresenter({json: json });
 
     document.getElementById('download').onclick = function (e){
       document.getElementById('download').setAttribute('href', 'data:' + convertedData);
