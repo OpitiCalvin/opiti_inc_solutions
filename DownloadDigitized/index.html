@@ -20,10 +20,12 @@
 
 	<style>
 		html {
-			overflow-y: scroll;
+			height: 100%;
+			/*overflow-y: scroll;*/
 		}
 		#map {
-		  min-height: 500px;
+		  /*min-height: 500px;*/
+		  min-height: 100%;
 		}
 		.button {
 			background-color: Crimson;  
@@ -42,9 +44,10 @@
 </head>
 
 <body>
-	<div class="header-w3layouts" style="padding-top:30px;">
+
+	<div class="header-w3layouts" >
 		<!-- Navigation -->
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="margin-left:10px;margin-right:10px;">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 			<div class="container">
 				<a class="navbar-brand" href="index.html">D&amp;D: Digitize and Download</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -77,10 +80,10 @@
 	</div>
 	<!-- //header -->
 
-	<div class="container-fluid">
+	<div class="container-fluid" style="padding-top:30px;">
 		<div class="row" style="margin:0 10px;">
-			<div id="map" class="col-md-9 col-sm-12"></div>
-			<div id="tools"  class="col-md-3 col-sm-12">
+			<div id="map" class="col-lg-9 col-md-9 col-sm-12"></div>
+			<div id="tools" class="col-lg-3 col-md-3 col-sm-12" >
 				<div id="accordion">
 					<h3>Data Export</h3>
 					<div>					
@@ -102,11 +105,11 @@
 			</div>
 		</div>
 	</div>
-	<div id="footerSection" class="py-5 bg-dark" style="height:10%;background-color: #ede5f0;margin-right:10px;margin-left:10px;">
+	<div id="footerSection" class="py-5 bg-dark" style="position: absolute; bottom: 0; width: 100%; padding-bottom: 1rem!important; padding-top: 1rem!important; margin-right:10px;margin-left:10px;">
 		<!-- Footer -->    
-		<div class="container">
+		<!-- <div class="container"> -->
 			<p class="m-0 text-center text-white">Developed By <a href="https://www.opiticonsulting.com" target="_blank">Opiti Consulting</a> | &copy; <script type="text/javascript">document.write(new Date().getFullYear());</script> </p>
-		</div>
+		<!-- </div> -->
 		<!-- /.container -->
 	</div>
 
