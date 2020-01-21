@@ -5,26 +5,28 @@
 
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-	<link href="../lib/dist/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
 	<link rel="stylesheet" href="../lib/dist/jquery-ui-1.12.1/jquery-ui.min.css" />
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
 	<link href="css/styles.css" rel="stylesheet" type="text/css" media="all" />
 	<link rel="shortcut icon" href="../images/globe.ico">
 	<style>
-	html, body {
+	/*html, body {
 		height: 100%;
 		margin: 0;
-	}
+	}*/
 
 </style>
 
 </head>
 <body>
 
-	<div class="header-w3layouts" style="padding-top:62px;">
+	<!-- <div class="header-w3layouts" style="padding-top:62px;"> -->
+	<wrapper class="d-flex flex-column">
 		<!-- Navigation -->
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="margin-left:10px;margin-right:10px;">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 			<div class="container">
 				<a class="navbar-brand" href="index.html">MAP-GIS WebMapper</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,66 +56,74 @@
 				</div>
 			</div>
 		</nav>
-	</div>
+	<!-- </div> -->
 	<!-- //header -->
 	
-	<div class="row" style="margin:0 10px;">
-		<div id="mapid" class="col-md-9" style="height: 500px;"></div>
-		<div id="tools"  class="col-md-3">
-			<div id="accordion">
-				<h3>Load Data</h3>
-				<div>					
-					<p> The following data types are accepted:</p>
-					<ol>
-						<li>Zipped Shapefile</li>
-						<li>GeoJSON File</li>
-					</ol><br>
-					<input type="file" id="file_input" multiple>
-				</div>
-				<h3>View GeoJSON</h3>
-				<div id="geojson_content">
-					<p>
-						GeoJSON content here
-					</p>
-				</div>
+		<main class="container-fluid py-3 flex-fill" style="margin:50px 0 0 0;">
+			<div class="row" style="margin:0 10px;">
+				<div id="mapid" class="col-md-9" style="height: 85vh;"></div>
+				<div id="tools"  class="col-md-3">
+					<div id="accordion">
+						<h3>Load Data</h3>
+						<div>					
+							<p> The following data types are accepted:</p>
+							<ol>
+								<li>Zipped Shapefile</li>
+								<li>GeoJSON File</li>
+							</ol><br>
+							<input type="file" id="file_input" multiple>
+						</div>
+						<h3>View GeoJSON</h3>
+						<div id="geojson_content">
+							<p>
+								GeoJSON content here
+							</p>
+						</div>
 
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
+		</main>
 	
-	<div id="footerSection" class="py-5 bg-dark" style="height:10%;background-color: #ede5f0;margin-right:10px;margin-left:10px;">
-		<!-- Footer -->    
-		<div class="container">
-			<p class="m-0 text-center text-white">Developed By <a href="https://www.opiticonsulting.com" target="_blank">Opiti Consulting</a> | &copy; <script type="text/javascript">document.write(new Date().getFullYear());</script> </p>
-		</div>
-		<!-- /.container -->
-	</div>
+		<footer class="container-fluid w-100 bg-dark text-light py-3">
+		<!-- <div id="footerSection" class="py-5 bg-dark" style="height:10%;background-color: #ede5f0;margin-right:10px;margin-left:10px;"> -->
+			<!-- Footer -->    
+			<div class="container">
+				<p class="m-0 text-center text-white">Developed By <a href="https://www.opiticonsulting.com" target="_blank">Opiti Consulting</a> | &copy; <script type="text/javascript">document.write(new Date().getFullYear());</script> </p>
+			</div>
+			<!-- /.container -->
+		<!-- </div> -->
+		</footer>
+	</wrapper>
 
 
 	<!-- <script  -->
-		<script src="../lib/dist/jquery/jquery.min.js"></script>
-		<script type="text/javascript" src="../lib/dist/jquery-ui-1.12.1/jquery-ui.min.js"></script>
-		<script src="../lib/dist/bootstrap/js/bootstrap.min.js"></script>
-		<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
-		<script type="text/javascript" src="https://unpkg.com/shpjs@latest/dist/shp.js"></script>
-		
-		<script>
-			$( function() {
-				$( "#accordion" ).accordion();
-			} );
-		</script>
-		<script type="text/javascript" src="../lib/dist/leaflet_plugins/leaflet-geoip.js"></script>
-		<script type="text/javascript" src="js/main.js"></script>
-		<script type="text/javascript" src="js/tools.js"></script>
+	https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../lib/dist/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script> -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
 
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106069296-1"></script>
-		<script>
-	  		window.dataLayer = window.dataLayer || [];
-	  		function gtag(){dataLayer.push(arguments);}
-	  		gtag('js', new Date());
-			
-	  		gtag('config', 'UA-106069296-1');
-		</script>
+	<script type="text/javascript" src="https://unpkg.com/shpjs@latest/dist/shp.js"></script>
+	
+	<script>
+		$( function() {
+			$( "#accordion" ).accordion();
+		} );
+	</script>
+	<script type="text/javascript" src="../lib/dist/leaflet_plugins/leaflet-geoip.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/tools.js"></script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106069296-1"></script>
+	<script>
+  		window.dataLayer = window.dataLayer || [];
+  		function gtag(){dataLayer.push(arguments);}
+  		gtag('js', new Date());
+		
+  		gtag('config', 'UA-106069296-1');
+	</script>
 </body>
 </html>
