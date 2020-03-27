@@ -10,7 +10,7 @@ function processFiles(evt){
 			// Dynamic layer name variables
 			var lyr = L.geoJson({features:[]},{
 				onEachFeature: function popUp(f,l){
-					var out = [];
+					// var out = [];
 					var tab_content = "<table id='popTable' class='table table-striped table-bordered table-sm'> <tbody>";
 					var tab_end = "</tbody> </table>";
 					if (f.properties) {
@@ -73,12 +73,25 @@ function processFiles(evt){
 			// Dynamic layer name variables
 			var lyr = L.geoJson({features:[]},{
 				onEachFeature: function popUp(f,l){
-					var out = [];
+					// var out = [];
+					var tab_content = "<table id='popTable' class='table table-striped table-bordered table-sm'> <tbody>";
+					var tab_end = "</tbody> </table>";
 					if (f.properties) {
+						// for (var key in f.properties) {
+						// 	out.push (key+": "+f.properties[key]);
+						// }
 						for (var key in f.properties) {
-							out.push (key+": "+f.properties[key]);
+							// out.push (key+": "+f.properties[key]);
+							tab_content = tab_content + 
+								"<tr>"+
+								  "<th scope='row'>" + key + "</th>"+
+								  "<td>" + f.properties[key] + "</td>"+
+								"</tr>"
 						}
-						l.bindPopup(out.join("<br />"));
+
+						tab_content = tab_content + tab_end;
+						// l.bindPopup(out.join("<br />"));
+						l.bindPopup(tab_content);
 					}
 				},
 				style: function(feature) {
