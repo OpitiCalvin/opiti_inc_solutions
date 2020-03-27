@@ -1,23 +1,24 @@
 <html>
-<head>
-	
+	<head>	
 	<title>Map-GIS WebMapper - OpitiConsulting</title>
 
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    
+	
 	<link rel="stylesheet" href="../lib/dist/jquery-ui-1.12.1/jquery-ui.min.css" />
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+	<!-- <link rel="stylesheet" type="text/css" href="../lib/dist/DataTables/datatables.min.css"> -->
 	<link href="css/styles.css" rel="stylesheet" type="text/css" media="all" />
 	<link rel="shortcut icon" href="../images/globe.ico">
 	<style>
-	/*html, body {
-		height: 100%;
-		margin: 0;
-	}*/
-
+		.leaflet-popup-content{
+			width: 250px !important;;
+			height: 200px !important;;
+			overflow-x: auto !important;;
+			overflow-y: scroll !important;
+		}
 </style>
 
 </head>
@@ -97,16 +98,18 @@
 	<!-- <script  -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script type="text/javascript" src="../lib/dist/jquery-ui-1.12.1/jquery-ui.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
 
 	<script type="text/javascript" src="https://unpkg.com/shpjs@latest/dist/shp.js"></script>
 	
+	<!-- <script type="text/javascript" src="../lib/dist/DataTables/datatables.min.js"></script> -->
 	<script>
 		$( function() {
 			$( "#accordion" ).accordion();
 		} );
 	</script>
+	
 	<script type="text/javascript" src="../lib/dist/leaflet_plugins/leaflet-geoip.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript" src="js/tools.js"></script>
@@ -114,11 +117,19 @@
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106069296-1"></script>
 	<script>
-  		window.dataLayer = window.dataLayer || [];
-  		function gtag(){dataLayer.push(arguments);}
-  		gtag('js', new Date());
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
 		
-  		gtag('config', 'UA-106069296-1');
+		gtag('config', 'UA-106069296-1');
 	</script>
+	<!-- <script type="text/javascript">
+		$(function(){
+			$("#popTable").DataTable({
+				"pageLength":5
+			});
+		});
+		
+	</script> -->
 </body>
 </html>
